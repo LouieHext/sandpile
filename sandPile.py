@@ -10,9 +10,9 @@ import matplotlib.pyplot as plt
 import time as time
 import random as rand
 from matplotlib import colors
-from matplotlib.animation import FuncAnimation
+
 import matplotlib.cm as cm
-from scipy.ndimage.filters import gaussian_filter
+
 from tqdm import tqdm
 import sys
 
@@ -60,51 +60,7 @@ class Pile():
         self.heights=np.random.randint(6, size=(self.m))
         return self.heights 
 
-    def relax(self):
-        for i in range(self.n):
-            for j in range(self.n):
-                if self.relaxed[i][j]==True:    
-                    self.heights[i][j]=self.heights[i][j]-4
-                    if i==0:
-                        
-                        if j==0:
-                            self.heights[i][j+1]=self.heights[i][j+1]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                        if j==self.n-1:
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                        else:
-                            self.heights[i][j+1]=self.heights[i][j+1]+1
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                            
-                    if i==self.n-1:
-                        if j==0:
-                            self.heights[i][j+1]=self.heights[i][j+1]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                        if j==self.n-1:
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                        else:
-                            self.heights[i][j+1]=self.heights[i][j+1]+1
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                    else:
-                        
-                        if j==0:
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                        if j==self.n-1:
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                        else:
-                            self.heights[i][j+1]=self.heights[i][j+1]+1
-                            self.heights[i][j-1]=self.heights[i][j-1]+1
-                            self.heights[i-1][j]=self.heights[i-1][j]+1
-                            self.heights[i+1][j]=self.heights[i+1][j]+1
-                            
+   
 
         return self.heights
     
@@ -210,12 +166,6 @@ def animate(N):
         count=count+1
         
         
-#FuncAnimation(fig, a.run_anim, frames=10)
-#plt.show()
-
-#animate(1000)
-
-
 
 def main(size,grains):
     s=time.time()    
